@@ -29,7 +29,8 @@ namespace WCF_generowanie
     {
         bool boolValue = true;
         string stringValue = "Hello ";
-
+        string id_card_number;
+        string id_card_series;
         [DataMember]
         public bool BoolValue
         {
@@ -42,6 +43,19 @@ namespace WCF_generowanie
         {
             get { return stringValue; }
             set { stringValue = value; }
+        }
+
+        [DataMember]
+        public string Id_number
+        {
+            get { return id_card_number; }
+            set { id_card_number = value; }
+        }
+        [DataMember]
+        public string Id_card_series
+        {
+            get { return id_card_number; }
+            set { id_card_number = value; }
         }
     }
 }
