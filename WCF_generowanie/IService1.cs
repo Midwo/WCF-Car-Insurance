@@ -13,11 +13,11 @@ namespace WCF_generowanie
     public interface IService1
     {
 
-        [OperationContract]
-        string GetData(int value);
+        //[OperationContract]
+        //string GetData(int value);
 
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        //[OperationContract]
+        //CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
     }
@@ -27,35 +27,43 @@ namespace WCF_generowanie
     [DataContract]
     public class CompositeType
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        //bool boolValue = true;
+        //string stringValue = "Hello ";
         string id_card_number;
         string id_card_series;
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        string address;
+        //[DataMember]
+        //public bool BoolValue
+        //{
+        //    get { return boolValue; }
+        //    set { boolValue = value; }
+        //}
+
+        //[DataMember]
+        //public string StringValue
+        //{
+        //    get { return stringValue; }
+        //    set { stringValue = value; }
+        //}
 
         [DataMember]
-        public string StringValue
+        public string card_number
         {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
-
-        [DataMember]
-        public string Id_number
-        {
-            get { return id_card_number; }
-            set { id_card_number = value; }
+            get { return card_number; }
+            set { card_number = value; }
         }
         [DataMember]
         public string Id_card_series
         {
             get { return id_card_number; }
             set { id_card_number = value; }
+        }
+
+        [DataMember]
+        public string Address
+        {
+            get { return address; }
+            set { address = value; }
         }
     }
 }
