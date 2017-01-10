@@ -15,10 +15,11 @@ namespace WCF_generowanie
     public class Service1 : IService1
     {
 
+        string sqlconnectionstring = WCF_generowanie.Properties.Settings.Default.connectionstring;
+
         DataSet sqldata(string cmd)
         {
-            string sqlconnectionstring = WCF_generowanie.Properties.Settings.Default.connectionstring;
-
+            
             using (SqlConnection connection = new SqlConnection(sqlconnectionstring))
             {
                 connection.Open();
@@ -29,12 +30,21 @@ namespace WCF_generowanie
                 adp.Fill(ds);
 
                 return ds;
-                // Do work here; connection closed on following line.
+            }
+        }
+
+        void sqlcommand(string cmd)
+        {
+            using (SqlConnection connection = new SqlConnection(sqlconnectionstring))
+            {
+                SqlCommand command = new SqlCommand(cmd, connection);
+                command.Connection.Open();
+                command.ExecuteNonQuery();
             }
         }
         //public string GetData(int value, string hmm)
         //{
-   
+
 
 
         //    return string.Format("You entered: {0}", Convert.ToString("" + value + " " + hmm + ""));
@@ -72,21 +82,23 @@ namespace WCF_generowanie
 
         public DataSet ReadBasicInformation(string personal_identity_number)
         {
-            DataSet ds = sqldata("ss");
+            DataSet ds = sqldata("SELECT [Id],[personal_identity_number],[identity_card_number],[address],[name_surname],[discounts],[phone_number],[birthday] FROM[dbo].[BasicInformation] where [personal_identity_number] = "+ personal_identity_number + "");
             return ds;
         }
 
        
         public DataSet ReadPurchaseHistory(string personal_identity_number)
         {
-            DataSet ds = sqldata("ss");
+            DataSet ds = sqldata("SELECT TOP 1000 [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = " + personal_identity_number + "");
+
             return ds;
         }
 
        
         public DataSet ReadHistoryOfAccidents(string personal_identity_number)
         {
-            DataSet ds = sqldata("ss");
+            DataSet ds = sqldata("SELECT [Id] ,[vin] ,[descriptionofthedamage] ,[carname] ,[personal_identity_number] ,[penalty] ,[date] FROM [dbo].[HistoryOfAccidents] where [personal_identity_number] =" + personal_identity_number +"");
+
             return ds;
         }
 
