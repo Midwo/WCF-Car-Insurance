@@ -14,11 +14,11 @@ namespace WCF_generowanie
     public interface IService1
     {
 
-        [OperationContract]
-        string GetData(int value, string hmm);
+        //[OperationContract]
+        //string GetData(int value, string hmm);
 
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        //[OperationContract]
+        //CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
         HistoryOfAccidents SaveAccidents(HistoryOfAccidents AllInfo);

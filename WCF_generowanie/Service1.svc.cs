@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -13,30 +14,49 @@ namespace WCF_generowanie
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value, string hmm)
+
+        DataSet sqldata(string cmd)
         {
+            string sqlconnectionstring = WCF_generowanie.Properties.Settings.Default.connectionstring;
 
-
-
-            return string.Format("You entered: {0}", Convert.ToString("" + value + " " + hmm + ""));
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-
-        {
-            if (composite == null)
+            using (SqlConnection connection = new SqlConnection(sqlconnectionstring))
             {
-                throw new ArgumentNullException("composite");
+                connection.Open();
+
+                SqlDataAdapter adp = new SqlDataAdapter(cmd,connection);
+              
+                DataSet ds = new DataSet();
+                adp.Fill(ds);
+
+                return ds;
+                // Do work here; connection closed on following line.
             }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
         }
+        //public string GetData(int value, string hmm)
+        //{
+   
+
+
+        //    return string.Format("You entered: {0}", Convert.ToString("" + value + " " + hmm + ""));
+        //}
+
+        //public CompositeType GetDataUsingDataContract(CompositeType composite)
+
+        //{
+        //    if (composite == null)
+        //    {
+        //        throw new ArgumentNullException("composite");
+        //    }
+        //    if (composite.BoolValue)
+        //    {
+        //        composite.StringValue += "Suffix";
+        //    }
+        //    return composite;
+        //}
 
         public HistoryOfAccidents SaveAccidents(HistoryOfAccidents AllInfo)
         {
+           
             return AllInfo;
         }
 
@@ -52,22 +72,22 @@ namespace WCF_generowanie
 
         public DataSet ReadBasicInformation(string personal_identity_number)
         {
-            DataSet x = new DataSet();
-            return x;
+            DataSet ds = sqldata("ss");
+            return ds;
         }
 
        
         public DataSet ReadPurchaseHistory(string personal_identity_number)
         {
-            DataSet x = new DataSet();
-            return x;
+            DataSet ds = sqldata("ss");
+            return ds;
         }
 
        
         public DataSet ReadHistoryOfAccidents(string personal_identity_number)
         {
-            DataSet x = new DataSet();
-            return x;
+            DataSet ds = sqldata("ss");
+            return ds;
         }
 
     }
