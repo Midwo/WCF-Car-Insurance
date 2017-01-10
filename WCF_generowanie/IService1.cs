@@ -27,7 +27,7 @@ namespace WCF_generowanie
         BasicInformation SaveBasicInformation(BasicInformation AllInfo);
 
         [OperationContract]
-        BasicInformation SavePurchaseHistory(BasicInformation AllInfo);
+        PurchaseHistory SavePurchaseHistory(PurchaseHistory AllInfo);
 
         [OperationContract]
         DataSet ReadBasicInformation(string personal_identity_number);
@@ -75,6 +75,7 @@ namespace WCF_generowanie
         float discounts;
         string phone_number;
         DateTime birthday;
+        string info;
 
         [DataMember]
         public string Personal_identity_number
@@ -123,6 +124,12 @@ namespace WCF_generowanie
             get { return birthday; }
             set { birthday = value; }
         }
+        [DataMember]
+        public string Info
+        {
+            get { return info; }
+            set { info = value; }
+        }
     }
 
     [DataContract]
@@ -134,6 +141,7 @@ namespace WCF_generowanie
         string personal_identity_number;
         float penalty;
         DateTime date;
+        string info;
 
         [DataMember]
         public string Vin
@@ -171,6 +179,12 @@ namespace WCF_generowanie
             get { return date; }
             set { date = value; }
         }
+        [DataMember]
+        public string Info
+        {
+            get { return info; }
+            set { info = value; }
+        }
     }
 
     [DataContract]
@@ -186,6 +200,7 @@ namespace WCF_generowanie
         bool active;
         string nameinsurer;
         DateTime savedate;
+        string info;
 
         [DataMember]
         public string Personal_identity_number
@@ -247,6 +262,12 @@ namespace WCF_generowanie
         {
             get { return savedate; }
             set { savedate = value; }
+        }
+        [DataMember]
+        public string Info
+        {
+            get { return info; }
+            set { info = value; }
         }
     }
 }

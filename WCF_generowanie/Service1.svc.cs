@@ -66,18 +66,85 @@ namespace WCF_generowanie
 
         public HistoryOfAccidents SaveAccidents(HistoryOfAccidents AllInfo)
         {
-           
-            return AllInfo;
+            if (AllInfo.Vin == null || AllInfo.CarName == null || AllInfo.Date == null || AllInfo.DescriptionOfTheDamage == null || AllInfo.Vin == null )
+            {
+                AllInfo.Info = "Nie zapisano danych";
+                return AllInfo;
+            }
+
+
+            else
+            {
+                try
+                {
+                    AllInfo.Info = "Zapisano dane";
+                    return AllInfo;
+                }
+                catch (Exception ex)
+                {
+                    string command = "";
+                    sqlcommand(command);
+                    AllInfo.Info = "Nie zapisano danych, błąd: " + ex.ToString() + "";
+                    return AllInfo;
+                }
+
+            }
+
+
         }
 
         public BasicInformation SaveBasicInformation(BasicInformation AllInfo)
         {
-            return AllInfo;
+            if (AllInfo.Address == null || AllInfo.Birthday == null || AllInfo.Identity_card_number == null || AllInfo.Name_surname == null || AllInfo.Personal_identity_number == null || AllInfo.Phone_number == null)
+            {
+                AllInfo.Info = "Nie zapisano danych";
+                return AllInfo;
+            }
+
+
+            else
+            {
+                try
+                {
+                    string command = "INSERT INTO [dbo].[BasicInformation] ([personal_identity_number], [identity_card_number], [address], [name_surname], [discounts], [phone_number], [birthday]) VALUES ('"+AllInfo.Personal_identity_number+ "', '" + AllInfo.Identity_card_number + "', '" + AllInfo.Address + "', '" + AllInfo.Name_surname + "', " + AllInfo.Discounts + ", '" + AllInfo.Phone_number + "', '" + AllInfo.Birthday.ToString() + "')";
+                    sqlcommand(command);
+                    AllInfo.Info = "Zapisano dane";
+                    return AllInfo;
+                }
+                catch (Exception ex)
+                {
+                    AllInfo.Info = "Nie zapisano danych, błąd: " + ex.ToString() + "";
+                    return AllInfo;
+                }
+
+            }
         }
 
-        public BasicInformation SavePurchaseHistory(BasicInformation AllInfo)
+        public PurchaseHistory SavePurchaseHistory(PurchaseHistory AllInfo)
         {
-            return AllInfo;
+
+            if (AllInfo.Begindate == null || AllInfo.Begindate == null || AllInfo.Descriptioncar == null || AllInfo.Descriptionpackage == null || AllInfo.Enddate == null || AllInfo.Nameinsurer == null || AllInfo.Personal_identity_number == null || AllInfo.Savedate == null || AllInfo.Vin == null)
+            {
+                AllInfo.Info = "Nie zapisano danych";
+                return AllInfo;
+            }
+
+            else
+            {
+                try
+                {
+                    string command = "";
+                    sqlcommand(command);
+                    AllInfo.Info = "Zapisano dane";
+                    return AllInfo;
+                }
+                catch (Exception ex)
+                {
+                    AllInfo.Info = "Nie zapisano danych, błąd: "+ex.ToString()+"";
+                    return AllInfo;
+                }
+        
+            }
         }
 
         public DataSet ReadBasicInformation(string personal_identity_number)
