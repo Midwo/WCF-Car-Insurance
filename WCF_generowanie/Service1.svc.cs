@@ -82,7 +82,7 @@ namespace WCF_generowanie
                 }
                 catch (Exception ex)
                 {
-                    string command = "";
+                    string command = "INSERT INTO [dbo].[HistoryOfAccidents] ([vin], [descriptionofthedamage], [carname], [personal_identity_number], [penalty], [date]) VALUES ('" + AllInfo.Vin+ "', '" + AllInfo.DescriptionOfTheDamage+ "', '" + AllInfo.CarName+ "', '" + AllInfo.PersonalIdentityNumber+ "', " + AllInfo.Penalty+", '"+AllInfo.Date.ToString()+"')";
                     sqlcommand(command);
                     AllInfo.Info = "Nie zapisano danych, błąd: " + ex.ToString() + "";
                     return AllInfo;
@@ -133,7 +133,7 @@ namespace WCF_generowanie
             {
                 try
                 {
-                    string command = "";
+                    string command = "INSERT INTO [dbo].[PurchaseHistory] ([personal_identity_number], [vin], [begindate], [enddate], [price], [descriptionpackage], [descriptioncar], [active], [nameinsurer], [savedate]) VALUES ('" + AllInfo.Personal_identity_number+ "', '" + AllInfo.Vin+"', '" + AllInfo.Begindate+ "', '" + AllInfo.Enddate+ "', " + AllInfo.Price+ ", '" + AllInfo.Descriptionpackage+ "', '" + AllInfo.Descriptioncar+"', "+AllInfo.Active+", '"+AllInfo.Nameinsurer+"', '"+AllInfo.Savedate.ToString()+"')";
                     sqlcommand(command);
                     AllInfo.Info = "Zapisano dane";
                     return AllInfo;
