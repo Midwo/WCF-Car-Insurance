@@ -156,7 +156,7 @@ namespace WCF_generowanie
        
         public DataSet ReadPurchaseHistory(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT TOP 1000 [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = " + personal_identity_number + "");
+            DataSet ds = sqldata("SELECT [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = " + personal_identity_number + "");
 
             return ds;
         }
