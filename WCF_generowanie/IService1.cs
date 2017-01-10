@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -14,11 +15,28 @@ namespace WCF_generowanie
     {
 
         [OperationContract]
-        string GetData(int value);
+        string GetData(int value, string hmm);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
+        [OperationContract]
+        HistoryOfAccidents SaveAccidents(HistoryOfAccidents AllInfo);
+
+        [OperationContract]
+        BasicInformation SaveBasicInformation(BasicInformation AllInfo);
+
+        [OperationContract]
+        BasicInformation SavePurchaseHistory(BasicInformation AllInfo);
+
+        [OperationContract]
+        DataSet ReadBasicInformation(string personal_identity_number);
+
+        [OperationContract]
+        DataSet ReadPurchaseHistory(string personal_identity_number);
+
+        [OperationContract]
+        DataSet ReadHistoryOfAccidents(string personal_identity_number);
         // TODO: Add your service operations here
     }
 
