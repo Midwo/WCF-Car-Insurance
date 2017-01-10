@@ -167,6 +167,7 @@ namespace WCF_generowanie
         string descriptioncar;
         bool active;
         string nameinsurer;
+        DateTime savedate;
 
         [DataMember]
         public string Personal_identity_number
@@ -222,6 +223,12 @@ namespace WCF_generowanie
         {
             get { return nameinsurer; }
             set { nameinsurer = value; }
+        }
+        [DataMember]
+        public DateTime Savedate
+        {
+            get { return savedate; }
+            set { savedate = value; }
         }
     }
 }
