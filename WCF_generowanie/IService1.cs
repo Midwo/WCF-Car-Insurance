@@ -13,11 +13,11 @@ namespace WCF_generowanie
     public interface IService1
     {
 
-        //[OperationContract]
-        //string GetData(int value);
+        [OperationContract]
+        string GetData(int value);
 
-        //[OperationContract]
-        //CompositeType GetDataUsingDataContract(CompositeType composite);
+        [OperationContract]
+        CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
     }
@@ -27,36 +27,62 @@ namespace WCF_generowanie
     [DataContract]
     public class CompositeType
     {
-        //bool boolValue = true;
-        //string stringValue = "Hello ";
-        string id_card_number;
-        string id_card_series;
-        string address;
-        //[DataMember]
-        //public bool BoolValue
-        //{
-        //    get { return boolValue; }
-        //    set { boolValue = value; }
-        //}
-
-        //[DataMember]
-        //public string StringValue
-        //{
-        //    get { return stringValue; }
-        //    set { stringValue = value; }
-        //}
+        bool boolValue = true;
+        string stringValue = "Hello ";
 
         [DataMember]
-        public string card_number
+        public bool BoolValue
         {
-            get { return card_number; }
-            set { card_number = value; }
+            get { return boolValue; }
+            set { boolValue = value; }
+        }
+
+        [DataMember]
+        public string StringValue
+        {
+            get { return stringValue; }
+            set { stringValue = value; }
+        }
+
+    }
+
+
+    [DataContract]
+    public class BasicInformation
+    {
+        string personal_identity_number;
+        string identity_card_number;
+        string address;
+        string name_surname;
+        float discounts;
+        string phone_number;
+        DateTime birthday;
+
+        [DataMember]
+        public string Personal_identity_number
+        {
+            get { return personal_identity_number; }
+            set { personal_identity_number = value; }
         }
         [DataMember]
-        public string Id_card_series
+        public string Identity_card_number
         {
-            get { return id_card_number; }
-            set { id_card_number = value; }
+            get { return identity_card_number; }
+            set { identity_card_number = value; }
+        }
+
+        [DataMember]
+        public string Name_surname
+        {
+            get { return name_surname; }
+            set { name_surname = value; }
+        }
+
+        [DataMember]
+        public float Discounts
+        {
+            get { return discounts; }
+            set { discounts = value; }
         }
 
         [DataMember]
@@ -65,5 +91,138 @@ namespace WCF_generowanie
             get { return address; }
             set { address = value; }
         }
+
+        [DataMember]
+        public string Phone_number
+        {
+            get { return phone_number; }
+            set { phone_number = value; }
+        }
+
+        [DataMember]
+        public DateTime Birthday
+        {
+            get { return birthday; }
+            set { birthday = value; }
+        }
+    }
+
+    [DataContract]
+    public class HistoryOfAccidents
+    {
+        string vin;
+        string descriptionofthedamage;
+        string carname;
+        string personal_identity_number;
+        float penalty;
+        DateTime date;
+
+        [DataMember]
+        public string Vin
+        {
+            get { return vin; }
+            set { vin = value; }
+        }
+        [DataMember]
+        public string DescriptionOfTheDamage
+        {
+            get { return descriptionofthedamage; }
+            set { descriptionofthedamage = value; }
+        }
+        [DataMember]
+        public string CarName
+        {
+            get { return carname; }
+            set { carname = value; }
+        }
+        [DataMember]
+        public string PersonalIdentityNumber
+        {
+            get { return personal_identity_number; }
+            set { personal_identity_number = value; }
+        }
+        [DataMember]
+        public float Penalty
+        {
+            get { return penalty; }
+            set { penalty = value; }
+        }
+        [DataMember]
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+    }
+
+    [DataContract]
+    public class PurchaseHistory
+    {
+        string personal_identity_number;
+        string vin;
+        DateTime begindate;
+        DateTime enddate;
+        float price;
+        string descriptionpackage;
+        string descriptioncar;
+        bool active;
+        string nameinsurer;
+
+        [DataMember]
+        public string Personal_identity_number
+        {
+            get { return personal_identity_number; }
+            set { personal_identity_number = value; }
+        }
+
+        [DataMember]
+        public string Vin
+        {
+            get { return vin; }
+            set { vin = value; }
+        }
+        [DataMember]
+      public  DateTime Begindate
+        {
+            get { return begindate; }
+            set { begindate = value; }
+        }
+        [DataMember]
+        public DateTime Enddate
+        {
+            get { return enddate; }
+            set { enddate = value; }
+        }
+             [DataMember]
+     public float Price
+        {
+            get { return price; }
+            set { price = value; }
+        }
+             [DataMember]
+     public string Descriptionpackage
+        {
+            get { return descriptionpackage; }
+            set { descriptionpackage = value; }
+        }
+             [DataMember]
+      public string Descriptioncar
+        {
+            get { return descriptioncar; }
+            set { descriptioncar = value; }
+        }
+             [DataMember]
+     public bool Active
+        {
+            get { return active; }
+            set { active = value; }
+        }
+             [DataMember]
+      public string Nameinsurer
+        {
+            get { return nameinsurer; }
+            set { nameinsurer = value; }
+        }
     }
 }
+
