@@ -23,10 +23,19 @@ namespace WCF_generowanie
                 connection.Open();
 
                 SqlDataAdapter adp = new SqlDataAdapter(cmd,connection);
-              
-                DataSet ds = new DataSet();
-                adp.Fill(ds);
+             
 
+
+                DataSet ds = new DataSet();
+                try
+                {
+
+                    adp.Fill(ds);
+                }
+                catch
+                {
+                    return ds;
+                }
                 return ds;
             }
         }
