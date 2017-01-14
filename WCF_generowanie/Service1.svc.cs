@@ -49,7 +49,22 @@ namespace WCF_generowanie
                 command.ExecuteNonQuery();
             }
         }
-   
+
+        public string UpdateBasicInformation(int ID, string personal_identity_number, string identity_card_number, string address, string name_surname, float discounts, string phone_number, DateTime birthday)
+        {
+            try
+            {
+                string date = birthday.ToUniversalTime().ToString("u");
+                string command = "UPDATE[dbo].[BasicInformation] SET [personal_identity_number] = '"+personal_identity_number+"',  [identity_card_number] = '"+identity_card_number+"', [address] = '"+address+"',  [name_surname] = '"+name_surname+"', [phone_number] = '"+phone_number+"', [birthday] = '"+date+"', [discounts] = '"+discounts.ToString().Replace(',','.')+"' Where ID = "+ID+"";
+                sqlcommand(command);
+                return "Zaktualizowano  dane";
+            }
+            catch
+            {
+                return "Nie zaktualizowano danych.";
+            }
+
+        }
 
         public HistoryOfAccidents SaveAccidents(HistoryOfAccidents AllInfo)
         {

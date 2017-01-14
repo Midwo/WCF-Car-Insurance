@@ -33,6 +33,9 @@ namespace WCF_generowanie
 
         [OperationContract]
         DataSet ReadHistoryOfAccidents(string personal_identity_number);
+
+        [OperationContract]
+        string UpdateBasicInformation(int ID, string personal_identity_number, string identity_card_number, string address, string name_surname, float discounts, string phone_number, DateTime birthday);
     }
 
 
