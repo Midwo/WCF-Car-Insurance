@@ -79,7 +79,8 @@ namespace WCF_generowanie
             {
                 try
                 {
-                    string command = "INSERT INTO [dbo].[HistoryOfAccidents] ([vin], [descriptionofthedamage], [carname], [personal_identity_number], [penalty], [date]) VALUES ('" + AllInfo.Vin + "', '" + AllInfo.DescriptionOfTheDamage + "', '" + AllInfo.CarName + "', '" + AllInfo.PersonalIdentityNumber + "', " + AllInfo.Penalty.ToString().Replace(',','.') + ", '" + AllInfo.Date.ToString() + "')";
+                 
+                    string command = "INSERT INTO [dbo].[HistoryOfAccidents] ([vin], [descriptionofthedamage], [carname], [personal_identity_number], [penalty], [date]) VALUES ('" + AllInfo.Vin + "', '" + AllInfo.DescriptionOfTheDamage + "', '" + AllInfo.CarName + "', '" + AllInfo.PersonalIdentityNumber + "', " + AllInfo.Penalty.ToString().Replace(',','.') + ", '" + AllInfo.Date.ToString("yyyy.MM.dd hh:mm:ss") + "')";
                     sqlcommand(command);
                     AllInfo.Info = "Zapisano dane";
 
@@ -111,7 +112,7 @@ namespace WCF_generowanie
                 try
                 {
   
-                    string command = "INSERT INTO [dbo].[BasicInformation] ([personal_identity_number], [identity_card_number], [address], [name_surname], [discounts], [phone_number], [birthday]) VALUES ('"+AllInfo.Personal_identity_number+ "', '" + AllInfo.Identity_card_number + "', '" + AllInfo.Address + "', '" + AllInfo.Name_surname + "', '" + AllInfo.Discounts.ToString().Replace(',', '.') + "', '" + AllInfo.Phone_number + "', '" + AllInfo.Birthday.ToShortDateString()+"')";
+                    string command = "INSERT INTO [dbo].[BasicInformation] ([personal_identity_number], [identity_card_number], [address], [name_surname], [discounts], [phone_number], [birthday]) VALUES ('"+AllInfo.Personal_identity_number+ "', '" + AllInfo.Identity_card_number + "', '" + AllInfo.Address + "', '" + AllInfo.Name_surname + "', '" + AllInfo.Discounts.ToString().Replace(',', '.') + "', '" + AllInfo.Phone_number + "', '" + AllInfo.Birthday.ToString("yyyy.MM.dd hh:mm:ss") + "')";
                     sqlcommand(command);
                     
                     AllInfo.Info = "Zapisano dane";
@@ -141,7 +142,7 @@ namespace WCF_generowanie
                 {
                    
 
-                    string command = "INSERT INTO [dbo].[PurchaseHistory] ([personal_identity_number], [vin], [begindate], [enddate], [price], [descriptionpackage], [descriptioncar], [active], [nameinsurer], [savedate]) VALUES ('" + AllInfo.Personal_identity_number+ "', '" + AllInfo.Vin+"', '" + AllInfo.Begindate+ "', '" + AllInfo.Enddate+ "', " + AllInfo.Price.ToString().Replace(',', '.') + ", '" + AllInfo.Descriptionpackage+ "', '" + AllInfo.Descriptioncar+"', "+ Convert.ToByte(AllInfo.Active) + ", '"+AllInfo.Nameinsurer+"', '"+AllInfo.Savedate.ToString()+"')";
+                    string command = "INSERT INTO [dbo].[PurchaseHistory] ([personal_identity_number], [vin], [begindate], [enddate], [price], [descriptionpackage], [descriptioncar], [active], [nameinsurer], [savedate]) VALUES ('" + AllInfo.Personal_identity_number+ "', '" + AllInfo.Vin+"', '" + AllInfo.Begindate.ToString("yyyy.MM.dd hh:mm:ss") + "', '" + AllInfo.Enddate.ToString("yyyy.MM.dd hh:mm:ss") + "', " + AllInfo.Price.ToString().Replace(',', '.') + ", '" + AllInfo.Descriptionpackage+ "', '" + AllInfo.Descriptioncar+"', "+ Convert.ToByte(AllInfo.Active) + ", '"+AllInfo.Nameinsurer+"', '"+AllInfo.Savedate.ToString("yyyy.MM.dd hh:mm:ss") + "')";
                     sqlcommand(command);
                     AllInfo.Info = "Zapisano dane";
                     return AllInfo;
