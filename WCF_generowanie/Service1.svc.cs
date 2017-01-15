@@ -158,14 +158,14 @@ namespace WCF_generowanie
 
         public DataSet ReadBasicInformation(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id],[personal_identity_number],[identity_card_number],[address],[name_surname],[discounts],[phone_number],[birthday] FROM[dbo].[BasicInformation] where [personal_identity_number] = "+ personal_identity_number + "");
+            DataSet ds = sqldata("SELECT [Id],[personal_identity_number],[identity_card_number],[address],[name_surname],[discounts],[phone_number],[birthday] FROM[dbo].[BasicInformation] where [personal_identity_number] = '"+ personal_identity_number + "'");
             return ds;
         }
 
        
         public DataSet ReadPurchaseHistory(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = " + personal_identity_number + "");
+            DataSet ds = sqldata("SELECT [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = '" + personal_identity_number + "'");
 
             return ds;
         }
@@ -173,7 +173,7 @@ namespace WCF_generowanie
        
         public DataSet ReadHistoryOfAccidents(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id] ,[vin] ,[descriptionofthedamage] ,[carname] ,[personal_identity_number] ,[penalty] ,[date] FROM [dbo].[HistoryOfAccidents] where [personal_identity_number] =" + personal_identity_number +"");
+            DataSet ds = sqldata("SELECT [Id] ,[vin] ,[descriptionofthedamage] ,[carname] ,[personal_identity_number] ,[penalty] ,[date] FROM [dbo].[HistoryOfAccidents] where [personal_identity_number] ='" + personal_identity_number +"'");
 
             return ds;
         }
