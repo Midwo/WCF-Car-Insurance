@@ -158,14 +158,14 @@ namespace WCF_generowanie
 
         public DataSet ReadBasicInformation(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id],[personal_identity_number],[identity_card_number],[address],[name_surname],[discounts],[phone_number],[birthday] FROM[dbo].[BasicInformation] where [personal_identity_number] = '"+ personal_identity_number + "'");
+            DataSet ds = sqldata("SELECT [Id],[personal_identity_number] as 'Personal Identity Number',[identity_card_number],[address],[name_surname],[discounts],[phone_number],[birthday] FROM[dbo].[BasicInformation] where [personal_identity_number] = '"+ personal_identity_number + "'");
             return ds;
         }
 
        
         public DataSet ReadPurchaseHistory(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id] ,[personal_identity_number] ,[vin] ,[begindate] ,[enddate] ,[price] ,[descriptionpackage] ,[descriptioncar] ,[active] ,[nameinsurer] ,[savedate] FROM [dbo].[PurchaseHistory] where [personal_identity_number] = '" + personal_identity_number + "'");
+            DataSet ds = sqldata("SELECT [Id] ,[personal_identity_number] as 'Personal Identity Number',[vin] as 'Number Vin',[begindate] as 'Start date' ,[enddate] as 'End date',[price] as 'Price',[descriptionpackage] as 'Description package',[descriptioncar] as 'Desctription car',[active] as 'Active',[nameinsurer] as 'Name Insurer' ,[savedate] as 'Save date' FROM [dbo].[PurchaseHistory] where [personal_identity_number] = '" + personal_identity_number + "'");
 
             return ds;
         }
@@ -173,7 +173,7 @@ namespace WCF_generowanie
        
         public DataSet ReadHistoryOfAccidents(string personal_identity_number)
         {
-            DataSet ds = sqldata("SELECT [Id] ,[vin] ,[descriptionofthedamage] ,[carname] ,[personal_identity_number] ,[penalty] ,[date] FROM [dbo].[HistoryOfAccidents] where [personal_identity_number] ='" + personal_identity_number +"'");
+            DataSet ds = sqldata("SELECT [Id] ,[vin] as 'Vin' ,[descriptionofthedamage] as 'Description of the damage',[carname] as 'Car name' ,[personal_identity_number] as 'Personal identity number',[penalty] as 'Penalty',[date]  as 'Date' FROM [dbo].[HistoryOfAccidents] where [personal_identity_number] ='" + personal_identity_number +"'");
 
             return ds;
         }
